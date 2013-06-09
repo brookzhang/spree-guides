@@ -20,9 +20,20 @@ Git is used to push the code to Heroku.
 
 ## Configuring your application
 
-There are two major things you will need to edit before you can deploy your
-application to Heroku: the asset pipeline's `initialize_on_precompile` setting
+There are three major things you will need to edit before you can deploy your
+application to Heroku: your Gemfile to specify Ruby 1.9.3, the asset pipeline's `initialize_on_precompile` setting
 and S3 settings.
+
+### Using Ruby 1.9.3
+
+***
+If you are not using Spree 2.0.0 and above, then you can safely ignore this section.
+***
+
+Spree 2.0.0 requires a version of Ruby greater than or equal to Ruby 1.9.3. By default, Heroku uses Ruby 1.9.2, which *will not work* with Spree. To force Heroku to use Ruby 1.9.3, put this line in your Gemfile:
+
+```ruby
+ruby '1.9.3'```
 
 ### Asset Pipeline
 
@@ -108,7 +119,8 @@ heroku run rails console```
 And then running this code:
 
 ```ruby
-Spree::User.create!(:email => "you@example.com", :password => "yourpassword")```
+user = Spree::User.create!(:email => "you@example.com", :password => "yourpassword")
+user.spree_roles.create!(:name => "admin")```
 
 Exit out of the console and then attempt to sign in to your application to
 verify these credentials.
@@ -117,4 +129,3 @@ verify these credentials.
 
 For information about SSL support with Heroku, please read their [SSL
 Guide](https://devcenter.heroku.com/articles/ssl)
-

@@ -163,7 +163,11 @@ module Spree
         "attachment_height"=>360,
         "alt"=>nil,
         "viewable_type"=>"Spree::Variant",
-        "viewable_id"=>1}
+        "viewable_id"=>1,
+        "mini_url"=>"/spree/products/1/mini/file.png?1370533476",
+        "small_url"=>"/spree/products/1/small/file.png?1370533476",
+        "product_url"=>"/spree/products/1/product/file.png?1370533476",
+        "large_url"=>"/spree/products/1/large/file.png?1370533476"}
 
     OPTION_VALUE =
       {
@@ -346,7 +350,8 @@ module Spree
       {
         "id"=>1,
         "number"=>"R335381310",
-        "item_total"=>"0.0",
+        "item_total"=>"100.0",
+        "display_item_total"=>"$100.00",
         "total"=>"0.0",
         "state"=>"cart",
         "adjustment_total"=>"-12.0",
